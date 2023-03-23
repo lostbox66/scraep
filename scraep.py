@@ -46,7 +46,10 @@ def main():
     output_file_path = args.output
 
     results = []
-    extract_links(start_url, max_depth=max_depth, results=results)
+    try:
+        extract_links(start_url, max_depth=max_depth, results=results)
+    except KeyboardInterrupt:
+        pass
 
     with open(output_file_path, 'w') as output_file:
         json.dump(results, output_file)
@@ -54,4 +57,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
